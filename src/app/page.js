@@ -48,7 +48,9 @@ export default function Home() {
 
   const checkStatus = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/status");
+      const { data } = await axios.get(
+        "https://coupon-system-backend-aepb.onrender.com/status"
+      );
       setStatus(data);
       if (!data.canClaim && countdownModalClosed) {
         setCountdownModalClosed(false);
@@ -62,7 +64,9 @@ export default function Home() {
     setLoading(true);
     setError("");
     try {
-      const { data } = await axios.get("http://localhost:5000/claim-coupon");
+      const { data } = await axios.get(
+        "https://coupon-system-backend-aepb.onrender.com/claim-coupon"
+      );
       setCoupon(data.coupon);
       checkStatus();
     } catch (err) {
